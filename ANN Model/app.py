@@ -115,7 +115,7 @@ with st.container(border= True, width='stretch') :
     with right :
         st.subheader('Avg cost for two people', text_alignment='right')
         with st.container(border= True, width= 'stretch',height= 100) :
-            cost = st.slider('', 500, 2000, step=50)
+            cost = st.slider('', 200, 2500, step=100)
             
     btn = st.button('Predict', width='stretch')
     if btn :
@@ -129,8 +129,8 @@ with st.container(border= True, width='stretch') :
             
             result = model.predict(matrix)[0][0]
             scaled = one_scale.inverse_transform(pd.DataFrame([result]).values.reshape(-1,1))
-            output = round(scaled[0][0],1)
-        st.success(output)
+            output = str(round(scaled[0][0].copy(),2))
+        st.success(f'This place is { output } /5⭐ according to me. Make a wise decision about it :)')
             
         
         
